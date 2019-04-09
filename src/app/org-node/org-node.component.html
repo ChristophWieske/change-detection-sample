@@ -1,0 +1,8 @@
+  <button #visiblePart (click)="clicked()">
+    {{ data.title }}
+    <div #adorner class="adorner">1</div>
+  </button>
+
+  <div class="child-node-container" *ngIf="data.children">
+    <app-org-node *ngFor="let child of data.children" [data]="child" [level]="level + 1"></app-org-node>
+  </div>

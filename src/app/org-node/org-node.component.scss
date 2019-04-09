@@ -1,0 +1,66 @@
+:host {
+  display: block;
+  flex: 1 1 0px;
+}
+
+:host > button {
+  position: relative;
+  width: 65px;
+  padding: 10px;
+  text-align: center;
+  margin: 30px auto;
+  color: white;
+  cursor: pointer;
+  display: block;
+  border: none;
+  border-radius: 1px;
+}
+
+:host.level-0 > button {
+  background: #4286f4;
+}
+
+:host > button.highlight {
+  animation: level-0;
+  animation-duration: 2s;
+  animation-fill-mode: none;
+}
+
+@keyframes level-0 {
+  from {background-color: goldenrod;}
+  65% {background-color: goldenrod;}
+  to {}
+}
+
+:host.level-1 > button {
+  background: #3272db;
+}
+
+:host.level-2 > button {
+  background: #2561c4;
+}
+
+:host.level-3 > button {
+  background: #1b52ad;
+}
+
+.child-node-container {
+  display: flex
+}
+
+.adorner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  min-width: 15px;
+  width: auto;
+  border: 1px goldenrod solid;
+  color: #222;
+  line-height: 15px;
+  background: goldenrod;
+  border-radius: 2px;
+  padding: 3px;
+}
+
+
