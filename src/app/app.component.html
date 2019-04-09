@@ -1,15 +1,2 @@
-<mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened autosize="true">
-    <app-badge></app-badge>
-    <mat-divider></mat-divider>
-    <button mat-flat-button routerLink="dashboard" routerLinkActive="mat-primary">Dashboard</button>
-    <button mat-flat-button routerLink="profile" routerLinkActive="mat-primary">Mein Profil</button>
-    <button mat-flat-button routerLink="projects" routerLinkActive="mat-primary">Meine Projekte</button>
-  </mat-sidenav>
 
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-
+  <app-tree-node [data]="org"></app-tree-node>

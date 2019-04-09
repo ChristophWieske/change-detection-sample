@@ -1,19 +1,19 @@
-import { Component, OnInit, Input, HostBinding, AfterViewChecked, ViewChild, ElementRef, NgZone, ChangeDetectionStrategy, AfterContentChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, HostBinding, AfterViewChecked, ViewChild, ElementRef, NgZone, ChangeDetectionStrategy } from '@angular/core';
 import { OrgNode } from '../org-node';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-org-node',
-  templateUrl: './org-node.component.html',
-  styleUrls: ['./org-node.component.scss'],
+  selector: 'app-tree-node',
+  templateUrl: './tree-node.component.html',
+  styleUrls: ['./tree-node.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   // tslint:disable-next-line:use-host-property-decorator
   host: {
     'class': 'levelClass'
   }
 })
-export class OrgNodeComponent implements OnInit, AfterViewChecked, AfterContentChecked {
+export class TreeNodeComponent implements AfterViewChecked {
 
   @Input()
   data: OrgNode;
@@ -32,25 +32,12 @@ export class OrgNodeComponent implements OnInit, AfterViewChecked, AfterContentC
     return 'level-' + this.level;
   }
 
-  constructor(private _zone: NgZone, private _changeDetectorRef: ChangeDetectorRef) {
-    const original = _changeDetectorRef.markForCheck;
-    _changeDetectorRef.markForCheck = () => {
-      debugger;
-      original.call(_changeDetectorRef);
-    };
+  constructor(private _zone: NgZone) {
 
-    const original2 = _changeDetectorRef.detectChanges;
-    _changeDetectorRef.detectChanges = () => {
-      debugger;
-      original2.call(_changeDetectorRef);
-    };
-  }
-
-  ngOnInit() {
   }
 
   ngAfterViewChecked() {
-    console.log('Anchor');
+
     if (this.visiblePart) {
       this.visiblePart.nativeElement.classList.remove('highlight');
 
@@ -72,11 +59,13 @@ export class OrgNodeComponent implements OnInit, AfterViewChecked, AfterContentC
     }
   }
 
-  ngAfterContentChecked() {
-
-  }
-
   clicked() {
     // We don´t need anything here.
+    this.data.title = 'Hello World';
+
+    if (this.data.children && this.data.children.length > 0) {
+      debugger;
+      this.data.children[0].title = 'Hello World';
+    }
   }
 }
