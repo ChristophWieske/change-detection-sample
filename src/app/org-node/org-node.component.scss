@@ -22,7 +22,7 @@
 
 :host > button.highlight {
   animation: level-0;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-fill-mode: none;
 }
 
@@ -48,11 +48,12 @@
   display: flex
 }
 
-.adorner {
+.adorner,
+.root-adorner {
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
-  transform: translate(50%, -50%);
+  transform: translate(50%, 50%);
   min-width: 15px;
   width: auto;
   border: 1px goldenrod solid;
@@ -63,4 +64,11 @@
   padding: 3px;
 }
 
-
+.root-adorner {
+  top: 0;
+  transform: translate(50%, -50%);
+  bottom: unset;
+  background: darkred;
+  border: 1px darkred solid;
+  color: white;
+}

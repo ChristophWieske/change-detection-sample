@@ -1,3 +1,11 @@
 <mat-card>
-  <app-org-node [data]="org"></app-org-node>
+  <app-org-node [data]="org" ></app-org-node><!-- [showRootAdorner]="true" -->
+</mat-card>
+
+<mat-card>
+  <mat-form-field>
+    <mat-label>Deine Nachricht:</mat-label>
+    <textarea  matInput></textarea>
+  </mat-form-field>
+  <div *ngFor="let message of messages"></div>
 </mat-card>

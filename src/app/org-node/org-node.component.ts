@@ -1,19 +1,17 @@
-import { Component, OnInit, Input, HostBinding, AfterViewChecked, ViewChild, ElementRef, NgZone, ChangeDetectionStrategy, AfterContentChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, HostBinding, ViewChild, ElementRef, ChangeDetectionStrategy, NgZone, AfterViewChecked } from '@angular/core';
 import { OrgNode } from '../org-node';
-import { timer } from 'rxjs';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-org-node',
   templateUrl: './org-node.component.html',
   styleUrls: ['./org-node.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  /* changeDetection: ChangeDetectionStrategy.OnPush, */
   // tslint:disable-next-line:use-host-property-decorator
   host: {
     'class': 'levelClass'
   }
 })
-export class OrgNodeComponent implements OnInit, AfterViewChecked, AfterContentChecked {
+export class OrgNodeComponent implements AfterViewChecked {
 
   @Input()
   data: OrgNode;
@@ -27,56 +25,57 @@ export class OrgNodeComponent implements OnInit, AfterViewChecked, AfterContentC
   @ViewChild('adorner', { read: ElementRef})
   adorner: ElementRef;
 
+  @ViewChild('rootAdorner', { read: ElementRef})
+  rootAdorner: ElementRef;
+
+  @Input()
+  showRootAdorner = false;
+
   @HostBinding('class')
   get levelClass() {
     return 'level-' + this.level;
   }
 
-  constructor(private _zone: NgZone, private _changeDetectorRef: ChangeDetectorRef) {
-    const original = _changeDetectorRef.markForCheck;
-    _changeDetectorRef.markForCheck = () => {
-      debugger;
-      original.call(_changeDetectorRef);
-    };
-
-    const original2 = _changeDetectorRef.detectChanges;
-    _changeDetectorRef.detectChanges = () => {
-      debugger;
-      original2.call(_changeDetectorRef);
-    };
+  get justSomeGetter() {
+    this.noticeCD();
+    return undefined;
   }
 
-  ngOnInit() {
-  }
+  constructor(private _zone: NgZone) { }
 
   ngAfterViewChecked() {
-    console.log('Anchor');
-    if (this.visiblePart) {
-      this.visiblePart.nativeElement.classList.remove('highlight');
-
-      this._zone.runOutsideAngular(() => {
-        timer(10).pipe(
-          take(1)
-        ).subscribe(() => {
-          this.visiblePart.nativeElement.classList.add('highlight');
-          let html = this.adorner.nativeElement.innerHTML;
-          if (!html || html === '') {
-            html = 1;
-          } else {
-            html = +html + 1;
-          }
-
-          this.adorner.nativeElement.innerHTML = html;
-        });
-      });
+    if (this.showRootAdorner) {
+      this.incrementAdorner(this.rootAdorner);
     }
-  }
-
-  ngAfterContentChecked() {
-
   }
 
   clicked() {
     // We don´t need anything here.
+  }
+
+  noticeCD() {
+    if (this.visiblePart) {
+
+      this._zone.runOutsideAngular(() => {
+        this.visiblePart.nativeElement.addEventListener('animationend', event => {
+          this.visiblePart.nativeElement.classList.remove('highlight');
+        });
+      });
+
+      this.visiblePart.nativeElement.classList.add('highlight');
+
+      this.incrementAdorner(this.adorner);
+    }
+  }
+
+  incrementAdorner(adorner: ElementRef) {
+    let html = adorner.nativeElement.innerHTML;
+      if (!html || html === '') {
+        html = 1;
+      } else {
+        html = +html + 1;
+      }
+
+      adorner.nativeElement.innerHTML = html;
   }
 }

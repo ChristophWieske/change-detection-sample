@@ -1,4 +1,21 @@
 mat-card {
-  width: 60%;
-  margin: 100px auto;
+  display: inline-block;
+  width: 50%;
+  margin: 100px 50px;
+  overflow: auto;
+}
+
+mat-card + mat-card {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  height: 100%;
+  width: 300px;
+  margin: 0;
+  box-sizing: border-box;
+
+  textarea {
+    width: 100%;
+  }
 }
