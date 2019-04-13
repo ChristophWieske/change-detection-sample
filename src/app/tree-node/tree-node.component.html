@@ -1,5 +1,5 @@
-  <button #visiblePart (click)="clicked()">
-    {{ data.title }}
+  <button #visiblePart (click)="clicked(data)">
+    {{ data.counter }}
     <div #adorner class="adorner"></div>
     <div *ngIf="showRootAdorner" #rootAdorner class="root-adorner"></div>
   </button>
@@ -9,5 +9,5 @@
   </div>
 
   <div class="child-node-container" *ngIf="data.children">
-    <app-org-node *ngFor="let child of data.children" [data]="child" [level]="level + 1"></app-org-node>
+    <app-tree-node *ngFor="let child of data.children" [data]="child" [level]="level + 1"></app-tree-node>
   </div>

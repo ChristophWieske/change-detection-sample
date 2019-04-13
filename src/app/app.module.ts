@@ -6,19 +6,20 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatSidenavModule, MatButtonModule, MatDividerModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material/';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { OrgNodeComponent } from './org-node/org-node.component';
+import { TreeNodeComponent } from './tree-node/tree-node.component';
+import { Demo1Component } from './demo-1-change-detection/demo-1-change-detection.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     BadgeComponent,
-    DashboardComponent,
+    Demo1Component,
     ProfileComponent,
     ProjectsComponent,
-    OrgNodeComponent
+    TreeNodeComponent
   ],
   imports: [
     BrowserModule,

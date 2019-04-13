@@ -1,8 +1,9 @@
 mat-card {
   display: inline-block;
-  width: 50%;
+  width: calc(100% - 400px);
   margin: 100px 50px;
   overflow: auto;
+  box-sizing: border-box;
 }
 
 mat-card + mat-card {
@@ -15,7 +16,10 @@ mat-card + mat-card {
   margin: 0;
   box-sizing: border-box;
 
-  textarea {
+  .mat-form-field {
+    display: block;
     width: 100%;
   }
 }
+
+

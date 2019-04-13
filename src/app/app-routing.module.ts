@@ -2,7 +2,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { Demo1Component } from './demo-1-change-detection/demo-1-change-detection.component';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
     redirectTo: 'dashboard',
     pathMatch: 'full'
   }, {
-    component: DashboardComponent,
+    component: Demo1Component,
     path: 'dashboard'
   }, {
     component: ProfileComponent,

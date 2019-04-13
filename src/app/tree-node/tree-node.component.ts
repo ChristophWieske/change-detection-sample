@@ -1,20 +1,17 @@
 import { Component, Input, HostBinding, ViewChild, ElementRef, ChangeDetectionStrategy, NgZone, AfterViewChecked } from '@angular/core';
-import { OrgNode } from '../org-node';
+import { TreeNodeData, incrementNodeAndTheirChildren } from '../org-node';
+import { timer } from 'rxjs';
 
 @Component({
-  selector: 'app-org-node',
-  templateUrl: './org-node.component.html',
-  styleUrls: ['./org-node.component.scss'],
-  /* changeDetection: ChangeDetectionStrategy.OnPush, */
-  // tslint:disable-next-line:use-host-property-decorator
-  host: {
-    'class': 'levelClass'
-  }
+  selector: 'app-tree-node',
+  templateUrl: './tree-node.component.html',
+  styleUrls: ['./tree-node.component.scss'],
+  /* changeDetection: ChangeDetectionStrategy.OnPush */
 })
-export class OrgNodeComponent implements AfterViewChecked {
+export class TreeNodeComponent implements AfterViewChecked {
 
   @Input()
-  data: OrgNode;
+  data: TreeNodeData;
 
   @Input()
   level = 0;
@@ -50,7 +47,7 @@ export class OrgNodeComponent implements AfterViewChecked {
   }
 
   clicked() {
-    // We don´t need anything here.
+    incrementNodeAndTheirChildren(this.data);
   }
 
   noticeCD() {

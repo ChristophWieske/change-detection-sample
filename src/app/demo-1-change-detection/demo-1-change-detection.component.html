@@ -1,0 +1,17 @@
+<mat-card>
+  <button mat-flat-button color="primary" (click)="incrementAll()" *ngIf="false">Increment All</button>
+
+  <app-tree-node [data]="org" [showRootAdorner]="false"></app-tree-node>
+</mat-card>
+
+<mat-card *ngIf="false">
+  <h2 class="mat-h2">Nachrichten:</h2>
+  <mat-form-field *ngIf="false">
+    <mat-label>Nachricht senden:</mat-label>
+    <textarea #textarea matInput mat-autosize (keydown.enter)="sendMessage(textarea.value)"></textarea>
+  </mat-form-field>
+  <div *ngFor="let messageItem of messages">
+    <i>{{ messageItem.author }}:</i><br>
+    {{ messageItem.message }}<br><br>
+  </div>
+</mat-card>
