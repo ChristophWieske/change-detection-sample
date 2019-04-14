@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TreeNodeData, incrementNodeAndTheirChildren } from '../org-node';
+import { TreeNodeData, incrementNodeAndTheirChildren } from '../tree-node';
 import { interval } from 'rxjs';
 
 @Component({
-  selector: 'app-demo-1-change-detection',
-  templateUrl: './demo-1-change-detection.component.html',
-  styleUrls: ['./demo-1-change-detection.component.scss']
+  selector: 'app-demo-one-change-detection',
+  templateUrl: './demo-one-change-detection.component.html',
+  styleUrls: ['./demo-one-change-detection.component.scss']
 })
 export class Demo1Component implements OnInit, OnDestroy {
 

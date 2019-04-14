@@ -1,8 +1,7 @@
-import { ProjectsComponent } from './projects/projects.component';
-import { ProfileComponent } from './profile/profile.component';
+import { Demo2Component } from './demo-two-observables-and-pipes/demo-two-observables-and-pipes.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { Demo1Component } from './demo-1-change-detection/demo-1-change-detection.component';
+import { Demo1Component } from './demo-one-change-detection/demo-one-change-detection.component';
 
 const routes: Routes = [
   {
@@ -11,13 +10,16 @@ const routes: Routes = [
     pathMatch: 'full'
   }, {
     component: Demo1Component,
-    path: 'dashboard'
+    path: 'demo-1'
   }, {
-    component: ProfileComponent,
-    path: 'profile'
+    component: Demo2Component,
+    path: 'demo-2'
   }, {
-    component: ProjectsComponent,
-    path: 'projects'
+    component: Demo2Component,
+    path: 'demo-3'
+  }, {
+    component: Demo2Component,
+    path: 'demo-4'
   }
 ];
 

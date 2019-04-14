@@ -1,0 +1,41 @@
+mat-card {
+  display: inline-block;
+  width: calc(100% - 400px);
+  margin: 100px 50px;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+mat-card + mat-card {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  height: 100%;
+  width: 300px;
+  margin: 0;
+  box-sizing: border-box;
+
+  .mat-form-field {
+    display: block;
+    width: 100%;
+  }
+}
+
+
+.equal-space-container {
+  display: flex;
+
+  * {
+    flex: 1 1 0px;
+    margin: 0 10px;
+  }
+}
+
+.item-container {
+  margin-top: 20px;
+}
+
+.item-container:first-child {
+  margin-top: 35px;
+}

@@ -1,0 +1,38 @@
+<h1 class="mat-title">Demo 2: Pipes and observables</h1>
+
+<mat-card>
+
+  <mat-card-content>
+    <div class="equal-space-container">
+      <mat-form-field>
+        <input #input matInput placeholder="Suchen..." [ngModel]="filter" (ngModelChange)="filterSet($event)">
+        <mat-icon fontSet="fa" fontIcon="fa-search" matSuffix></mat-icon>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select [value]="selectedOrderOption" (selectionChange)="orderOptionPicked($event.value)">
+          <mat-option *ngFor="let option of orderOptions" [value]="option"> {{ option.display }} </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+
+  <mat-card-content *ngIf="(filteredAndOrderedItems).length > 0">
+    <h4 class="mat-h4">{{ (filteredAndOrderedItems).length }} Einträge gefunden</h4>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+
+  <mat-card-content *ngIf="(filteredAndOrderedItems).length === 0">
+    <h3 class="mat-h3">Keine Einträge gefunden</h3>
+  </mat-card-content>
+
+  <mat-card-content>
+    <div *ngFor="let item of (filteredAndOrderedItems)" class="equal-space-container item-container">
+      <span>{{ item.rating }}</span>
+      <span>{{ item.title }}</span>
+      <span>{{ item.type }}</span>
+    </div>
+  </mat-card-content>
+
+</mat-card>

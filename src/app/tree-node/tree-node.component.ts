@@ -1,5 +1,5 @@
 import { Component, Input, HostBinding, ViewChild, ElementRef, ChangeDetectionStrategy, NgZone, AfterViewChecked } from '@angular/core';
-import { TreeNodeData, incrementNodeAndTheirChildren } from '../org-node';
+import { TreeNodeData, incrementNodeAndTheirChildren } from '../tree-node';
 import { timer } from 'rxjs';
 
 @Component({
