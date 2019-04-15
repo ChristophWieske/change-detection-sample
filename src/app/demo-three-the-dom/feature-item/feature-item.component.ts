@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { wait } from 'src/app/demo-two-observables-and-pipes/item-node';
+import { wait } from 'src/app/wait';
 
 @Component({
   selector: 'app-feature-item',
