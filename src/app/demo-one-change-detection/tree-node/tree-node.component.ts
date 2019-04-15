@@ -5,13 +5,46 @@ import { timer } from 'rxjs';
 @Component({
   selector: 'app-tree-node',
   templateUrl: './tree-node.component.html',
-  styleUrls: ['./tree-node.component.scss'],
-  /* changeDetection: ChangeDetectionStrategy.OnPush */
+  styleUrls: ['./tree-node.component.scss']
 })
 export class TreeNodeComponent implements AfterViewChecked {
 
   @Input()
   data: TreeNodeData;
+
+  constructor(private _zone: NgZone) { }
+
+  clicked() {
+    incrementNodeAndTheirChildren(this.data);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   @Input()
   level = 0;
@@ -38,16 +71,10 @@ export class TreeNodeComponent implements AfterViewChecked {
     return undefined;
   }
 
-  constructor(private _zone: NgZone) { }
-
   ngAfterViewChecked() {
     if (this.showRootAdorner) {
       this.incrementAdorner(this.rootAdorner);
     }
-  }
-
-  clicked() {
-    incrementNodeAndTheirChildren(this.data);
   }
 
   noticeCD() {

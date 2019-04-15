@@ -2,14 +2,16 @@
 <h1 class="mat-title">Demo 1: Change Detection</h1>
 
 <mat-card>
-  <button mat-flat-button color="primary" (click)="incrementAll()" *ngIf="false">Increment All</button>
+  <button mat-flat-button color="primary" (click)="incrementAll()">Increment All</button>
+  <button mat-flat-button color="primary" (click)="startBot()" *ngIf="!botRunning">Start Bot</button>
+  <button mat-flat-button color="warn" (click)="stopBot()" *ngIf="botRunning">Stop Bot</button>
 
-  <app-tree-node [data]="org" [showRootAdorner]="false"></app-tree-node>
+  <app-tree-node [data]="rootNode" [showRootAdorner]="false"></app-tree-node>
 </mat-card>
 
-<mat-card *ngIf="false">
+<mat-card>
   <h2 class="mat-h2">Nachrichten:</h2>
-  <mat-form-field *ngIf="false">
+  <mat-form-field >
     <mat-label>Nachricht senden:</mat-label>
     <textarea #textarea matInput mat-autosize (keydown.enter)="sendMessage(textarea.value)"></textarea>
   </mat-form-field>

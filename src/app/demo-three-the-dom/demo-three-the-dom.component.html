@@ -1,0 +1,26 @@
+<h1 class="mat-title">Demo 3: DOM-Manipulationen</h1>
+
+<mat-card>
+  <mat-card-content>
+    <div class="all-space-first-container">
+      <span>Feature to include</span>
+      <mat-slide-toggle [checked]="allSelected | async" (toggleChange)="updateAll()"></mat-slide-toggle>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+
+  <mat-card-content>
+    <button mat-raised-button color="primary" (click)="markAll()" *ngIf="true">Mark them all</button>
+    <button mat-raised-button color="primary" (click)="switchPage()" *ngIf="true">Switch page</button>
+  </mat-card-content>
+
+  <mat-card-content>
+    <app-feature-item *ngFor="let feature of (featureOptions | async)">
+      <div class="all-space-first-container item-container">
+        <span>{{ feature.name }} (id: {{ feature.id }})</span>
+        <mat-slide-toggle [checked]="feature.selected" (change)="update(feature, $event.checked)"></mat-slide-toggle>
+      </div>
+    </app-feature-item>
+  </mat-card-content>
+
+</mat-card>

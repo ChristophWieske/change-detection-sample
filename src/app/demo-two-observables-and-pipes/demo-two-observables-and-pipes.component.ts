@@ -1,7 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { ItemNodeData, wait } from '../item-node';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ItemNodeData } from './item-node';
 import { BehaviorSubject } from 'rxjs';
 import { merge, map, shareReplay, tap } from 'rxjs/operators';
+import { filterAndOrder } from './filter-and-order';
 
 interface OrderOption {
   display: string;
@@ -14,7 +15,53 @@ interface OrderOption {
   styleUrls: ['./demo-two-observables-and-pipes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Demo2Component implements OnInit {
+export class Demo2Component {
+
+  orderBy = 'title';
+
+  filter = '';
+
+  get displayItems() {
+    return filterAndOrder(this.items, this.filter, this.orderBy);
+  }
+
+  setOrderBy(field: string) {
+    this.orderBy = field;
+  }
+
+  setFilter(filter: string) {
+    this.filter = filter;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   items: ItemNodeData[] = [
     { rating: 90, title: 'Gut gemacht...', type: 'Feedback' },
@@ -33,52 +80,4 @@ export class Demo2Component implements OnInit {
     { display: 'Nach Titel', field: 'title' },
     { display: 'Nach Typ', field: 'type' }
   ];
-
-  selectedOrderOption = this.orderOptions[0];
-
-  filter = '';
-
-  get filteredAndOrderedItems() {
-    return this.filterAndOrder(this.items, this.filter, this.selectedOrderOption.field);
-  }
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  filterAndOrder(items: any[], filter: string, order: string) {
-    let snapshot = items.slice();
-
-    // Lets presume this lasts pretty long.
-    wait(50);
-
-    if (filter) {
-      console.log('filter for: ' + filter);
-      snapshot = snapshot.filter(x =>
-        x.title.indexOf(filter) > -1
-        || x.type.indexOf(filter) > -1);
-    }
-
-    if (order) {
-      snapshot.sort((x, y) => {
-        if (typeof x[order] === 'string') {
-          return x[order].localeCompare(y[order]);
-        } else {
-          return x[order] - y[order];
-        }
-      });
-    }
-
-    return snapshot;
-  }
-
-  orderOptionPicked(option: OrderOption) {
-    this.selectedOrderOption = option;
-  }
-
-  filterSet(filter: string) {
-    this.filter = filter;
-  }
-
 }

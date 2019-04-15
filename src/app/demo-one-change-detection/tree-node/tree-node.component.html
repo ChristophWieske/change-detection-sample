@@ -1,4 +1,4 @@
-  <button #visiblePart (click)="clicked(data)">
+  <button #visiblePart (click)="clicked()">
     {{ data.counter }}
     <div #adorner class="adorner"></div>
     <div *ngIf="showRootAdorner" #rootAdorner class="root-adorner"></div>

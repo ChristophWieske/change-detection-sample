@@ -4,22 +4,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatSidenavModule, MatButtonModule, MatDividerModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule } from '@angular/material/';
-import { TreeNodeComponent } from './tree-node/tree-node.component';
-import { Demo1Component } from './demo-one-change-detection/demo-one-change-detection.component';
-import { Demo2Component } from './demo-two-observables-and-pipes/demo-two-observables-and-pipes.component';
+import { MatSidenavModule, MatButtonModule, MatDividerModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatSlideToggleModule } from '@angular/material/';
 import { FormsModule } from '@angular/forms';
-import { Demo2PurePipe } from './demo-two-observables-and-pipes/demo-two-pipe';
+import { Demo3Component } from './demo-three-the-dom/demo-three-the-dom.component';
+import { FeatureItemComponent } from './demo-three-the-dom/feature-item/feature-item.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
     BadgeComponent,
-    Demo1Component,
-    Demo2Component,
-    TreeNodeComponent,
-    Demo2PurePipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,13 +21,7 @@ import { Demo2PurePipe } from './demo-two-observables-and-pipes/demo-two-pipe';
     AppRoutingModule,
     MatSidenavModule,
     MatButtonModule,
-    MatDividerModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    FormsModule,
-    MatIconModule
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
