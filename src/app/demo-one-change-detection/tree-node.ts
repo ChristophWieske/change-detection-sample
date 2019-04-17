@@ -11,10 +11,11 @@ export function _incrementNodeAndTheirChildren(node: TreeNodeData) {
 }
 
 export function incrementNodeAndTheirChildren(node: TreeNodeData) {
-  node = Object.assign({}, node, {
+  node = {
+    ...node,
     counter: node.counter + 1,
     children: node.children ? node.children.map(x => incrementNodeAndTheirChildren(x)) : undefined
-  });
+  };
 
   return node;
 }

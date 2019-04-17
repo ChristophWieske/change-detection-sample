@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ItemNodeData } from './item-node';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest } from 'rxjs';
 import { merge, map, shareReplay, tap } from 'rxjs/operators';
 import { filterAndOrder } from './filter-and-order';
 
@@ -21,15 +21,15 @@ export class Demo2Component {
 
   filter = new BehaviorSubject('');
 
-
-  displayItems = this.orderBy.pipe(
-    merge(this.filter),
-    map(() => {
-      return filterAndOrder(this.items, this.filter.value, this.orderBy.value);
+  displayItems = combineLatest(
+    this.orderBy,
+    this.filter
+  ).pipe(
+    map(([orderBy, filter]) => {
+      return filterAndOrder(this.items, filter, orderBy);
     }),
     shareReplay()
   );
-
 
   setOrderBy(field: string) {
     this.orderBy.next(field);

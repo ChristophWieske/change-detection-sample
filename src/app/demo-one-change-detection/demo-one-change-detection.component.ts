@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { TreeNodeData, incrementNodeAndTheirChildren } from './tree-node';
 import { interval, Subscription } from 'rxjs';
 
