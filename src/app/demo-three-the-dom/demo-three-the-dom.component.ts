@@ -32,7 +32,7 @@ export class Demo3Component {
   }
 
   trackByFeatureId(index: number, feature: FeatureOption) {
-    return feature.name;
+    return feature.id;
   }
 
 

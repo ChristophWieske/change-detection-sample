@@ -17,20 +17,26 @@ interface OrderOption {
 })
 export class Demo2Component {
 
-  orderBy = 'title';
+  orderBy = new BehaviorSubject('title');
 
-  filter = '';
+  filter = new BehaviorSubject('');
 
-  get displayItems() {
-    return filterAndOrder(this.items, this.filter, this.orderBy);
-  }
+
+  displayItems = this.orderBy.pipe(
+    merge(this.filter),
+    map(() => {
+      return filterAndOrder(this.items, this.filter.value, this.orderBy.value);
+    }),
+    shareReplay()
+  );
+
 
   setOrderBy(field: string) {
-    this.orderBy = field;
+    this.orderBy.next(field);
   }
 
   setFilter(filter: string) {
-    this.filter = filter;
+    this.filter.next(filter);
   }
 
 

@@ -5,12 +5,12 @@
   <mat-card-content>
     <div class="equal-space-container">
       <mat-form-field>
-        <input #input matInput placeholder="Suchen..." [ngModel]="filter" (ngModelChange)="setFilter($event)">
+        <input #input matInput placeholder="Suchen..." [ngModel]="filter | async" (ngModelChange)="setFilter($event)">
         <mat-icon fontSet="fa" fontIcon="fa-search" matSuffix></mat-icon>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select [value]="orderBy" (selectionChange)="setOrderBy($event.value)">
+        <mat-select [value]="orderBy | async" (selectionChange)="setOrderBy($event.value)">
           <mat-option *ngFor="let option of orderOptions" [value]="option.field"> {{ option.display }} </mat-option>
         </mat-select>
       </mat-form-field>
@@ -18,17 +18,17 @@
     <mat-divider></mat-divider>
   </mat-card-content>
 
-  <mat-card-content *ngIf="displayItems.length > 0">
-    <h4 class="mat-h4">{{ displayItems.length }} Einträge gefunden</h4>
+  <mat-card-content *ngIf="(displayItems | async).length > 0">
+    <h4 class="mat-h4">{{ (displayItems | async).length }} Einträge gefunden</h4>
     <mat-divider></mat-divider>
   </mat-card-content>
 
-  <mat-card-content *ngIf="displayItems.length === 0">
+  <mat-card-content *ngIf="(displayItems | async).length === 0">
     <h3 class="mat-h3">Keine Einträge gefunden</h3>
   </mat-card-content>
 
   <mat-card-content>
-    <div *ngFor="let item of displayItems" class="equal-space-container item-container">
+    <div *ngFor="let item of (displayItems | async)" class="equal-space-container item-container">
       <span>{{ item.rating }}</span>
       <span>{{ item.title }}</span>
       <span>{{ item.type }}</span>

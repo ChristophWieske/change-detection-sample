@@ -15,7 +15,7 @@
   </mat-card-content>
 
   <mat-card-content>
-    <app-feature-item *ngFor="let feature of (featureOptions | async)">
+    <app-feature-item *ngFor="let feature of (featureOptions | async); trackBy: trackByIndex">
       <div class="all-space-first-container item-container">
         <span>{{ feature.name }} (id: {{ feature.id }})</span>
         <mat-slide-toggle [checked]="feature.selected" (change)="update(feature, $event.checked)"></mat-slide-toggle>

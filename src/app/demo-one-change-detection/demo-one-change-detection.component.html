@@ -6,7 +6,7 @@
   <button mat-flat-button color="primary" (click)="startBot()" *ngIf="!botRunning">Start Bot</button>
   <button mat-flat-button color="warn" (click)="stopBot()" *ngIf="botRunning">Stop Bot</button>
 
-  <app-tree-node [data]="rootNode" [showRootAdorner]="false"></app-tree-node>
+  <app-tree-node [data]="rootNode" [showRootAdorner]="true"></app-tree-node>
 </mat-card>
 
 <mat-card>

@@ -100,7 +100,7 @@ export class Demo1Component implements OnDestroy {
   }
 
   incrementAll() {
-    incrementNodeAndTheirChildren(this.rootNode);
+    this.rootNode = incrementNodeAndTheirChildren(this.rootNode);
   }
 
   private addMessage(message: string, from: string) {

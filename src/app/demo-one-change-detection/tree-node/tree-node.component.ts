@@ -5,7 +5,8 @@ import { timer } from 'rxjs';
 @Component({
   selector: 'app-tree-node',
   templateUrl: './tree-node.component.html',
-  styleUrls: ['./tree-node.component.scss']
+  styleUrls: ['./tree-node.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TreeNodeComponent implements AfterViewChecked {
 
@@ -15,7 +16,7 @@ export class TreeNodeComponent implements AfterViewChecked {
   constructor(private _zone: NgZone) { }
 
   clicked() {
-    incrementNodeAndTheirChildren(this.data);
+    this.data = incrementNodeAndTheirChildren(this.data);
   }
 
 
