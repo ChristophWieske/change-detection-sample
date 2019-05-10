@@ -15,7 +15,7 @@ export class TreeNodeComponent implements AfterViewChecked {
   constructor(private _zone: NgZone) { }
 
   clicked() {
-    incrementNodeAndTheirChildren(this.data);
+    this.data = incrementNodeAndTheirChildren(this.data);
   }
 
 
