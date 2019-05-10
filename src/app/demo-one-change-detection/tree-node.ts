@@ -3,7 +3,7 @@ export interface TreeNodeData {
   children?: TreeNodeData[];
 }
 
-export function _incrementNodeAndTheirChildren(node: TreeNodeData) {
+export function incrementNodeAndTheirChildren(node: TreeNodeData) {
   node.counter += 1;
   if (node.children) {
     node.children.forEach(x => incrementNodeAndTheirChildren(x));
@@ -12,7 +12,7 @@ export function _incrementNodeAndTheirChildren(node: TreeNodeData) {
   return node;
 }
 
-export function incrementNodeAndTheirChildren(node: TreeNodeData) {
+export function _incrementNodeAndTheirChildren(node: TreeNodeData) {
   node = {
     ...node,
     counter: node.counter + 1,
